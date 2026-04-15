@@ -1,0 +1,355 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #1e3c72, #2a5298, #4a90e2);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tick {
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  width: 3px;
+  padding-bottom: 15px;
+  height: 10px;
+  background: #888;
+  transform-origin: center;
+}
+
+.tick-minute {
+  opacity: 0.4;
+  height: 8px;
+}
+
+.tick-hour {
+  height: 18px;
+  width: 3px;
+  background: #ff4986;
+}
+
+/* CONTAINER */
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* CARD */
+.clock-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.card-title {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+}
+
+/* ANALOG CLOCK */
+.analog-clock {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: #1a1a1a;
+  margin: 0 auto 20px;
+  border: 3px solid #333;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.clock-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* MARKS */
+.hour-mark {
+  position: absolute;
+  width: 2px;
+  height: 20px;
+  background: white;
+  top: 10px;
+  left: 50%;
+  transform-origin: center bottom;
+}
+
+/* NUMBERS */
+.number {
+  position: absolute;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.twelve { top: 15px; left: 50%; transform: translateX(-50%); }
+.three { top: 50%; right: 15px; transform: translateY(-50%); }
+.six { bottom: 15px; left: 50%; transform: translateX(-50%); }
+.nine { top: 50%; left: 15px; transform: translateY(-50%); }
+
+/* HANDS */
+.hand {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform-origin: center bottom;
+  border-radius: 10px;
+  transition: transform 0.3s linear;
+}
+
+.hour-hand {
+  width: 6px;
+  height: 60px;
+  background: #ff6b9d;
+  margin-left: -3px;
+  z-index: 3;
+}
+
+.minute-hand {
+  width: 4px;
+  height: 80px;
+  background: #4ecdc4;
+  margin-left: -2px;
+  z-index: 2;
+}
+
+.second-hand {
+  width: 2px;
+  height: 90px;
+  background: #ffa726;
+  margin-left: -1px;
+  z-index: 1;
+}
+
+/* CENTER DOT */
+.center-dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ANALOG TIME */
+.analog-time-display {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.time-unit {
+  text-align: center;
+}
+
+.time-number {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.time-label {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* DIGITAL */
+.digital-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.digit-box {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  padding: 20px;
+  min-width: 80px;
+  text-align: center;
+}
+
+.digit {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.digit-label {
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+.separator {
+  font-size: 36px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 0.8; }
+  51%, 100% { opacity: 0.3; }
+}
+
+/* PROGRESS */
+.progress-bars {
+  margin-top: 20px;
+}
+
+.progress-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.progress-label {
+  width: 60px;
+  font-size: 12px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 6px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 3px;
+  margin-left: 15px;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 1s ease;
+}
+
+.progress-fill.hour {
+  background: linear-gradient(90deg, #ff6b9d, #ff8a80);
+}
+
+.progress-fill.minute {
+  background: linear-gradient(90deg, #4ecdc4, #80cbc4);
+}
+
+.progress-fill.second {
+  background: linear-gradient(90deg, #ffa726, #ffcc02);
+}
+
+/* DATE */
+.date-display {
+  grid-column: span 2;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  padding: 20px 40px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.1);
+}
+
+.date-item {
+  text-align: center;
+}
+
+.date-number {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.date-label {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.day-button {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  color: white;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .clock-card {
+    padding: 20px;
+  }
+
+  .analog-clock {
+    width: 200px;
+    height: 200px;
+  }
+
+  .hour-hand {
+    height: 50px;
+  }
+
+  .minute-hand {
+    height: 65px;
+  }
+
+  .second-hand {
+    height: 75px;
+  }
+
+  .digit-box {
+    padding: 15px;
+    min-width: 60px;
+  }
+
+  .digit {
+    font-size: 28px;
+  }
+
+  .separator {
+    font-size: 28px;
+  }
+
+  .progress-label {
+    width: 50px;
+    font-size: 10px;
+  }
+
+  .date-display {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    grid-column: span 1;
+  }
+
+  .date-number {
+    font-size: 22px;
+  }
+
+  .day-button {
+    font-size: 14px;
+  }
+
+  .date-display {
+    flex-direction: column;
+    gap: 20px;
+  }
+}   
