@@ -3,6 +3,18 @@ import "./App.css";
 
 function Clock() {
   const [time, setTime] = useState(new Date());
+   const [radius, setRadius] = useState(115);
+
+  useEffect(() => {
+    const updateRadius = () => {
+      setRadius(window.innerWidth <= 768 ? 93 : 115);
+    };
+
+    updateRadius();
+    window.addEventListener("resize", updateRadius);
+
+    return () => window.removeEventListener("resize", updateRadius);
+  }, []);
 
   const uzbekMonths = [
     'YANVAR','FEVRAL','MART','APREL','MAY','IYUN',
@@ -54,8 +66,8 @@ function Clock() {
 
               return (
                 <div key={i} className={`tick ${isHour ? "tick-hour" : "tick-minute"}`}
-                  style={{ transform: `rotate(${i * 6}deg) translateY(-115px)`}}/>
-                )
+                  style={{ transform: `rotate(${i * 6}deg) translateY(-${radius}px)`}}/>
+                ) 
             })}
 
             {/* numbers */}

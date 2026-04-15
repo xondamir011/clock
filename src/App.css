@@ -34,6 +34,7 @@ body {
   height: 18px;
   width: 3px;
   background: #ff4986;
+ 
 }
 
 .container {
@@ -80,6 +81,9 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* MARKS */
@@ -307,7 +311,7 @@ body {
   }
 
   .minute-hand {
-    height: 65px;
+    height: 70px;
   }
 
   .second-hand {
@@ -350,5 +354,19 @@ body {
   .date-display {
     flex-direction: column;
     gap: 20px;
+  }
+
+  .tick {
+    height: 10px;
+    width: 2px;
+    transform: rotate(0deg) translateY(-80px);
+    top: 47%;
+    left: 50%;
+    padding-bottom: 15px;
+   transform-origin: center;
+  }
+
+  .tick-hour {
+    height: 14px;
   }
 }   
